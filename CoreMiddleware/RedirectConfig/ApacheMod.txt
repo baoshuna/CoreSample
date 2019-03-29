@@ -1,0 +1,1 @@
+﻿RewriteRule ^/file/(.*) /home/$1 [L,R=302]

@@ -1,0 +1,8 @@
+﻿<rewrite>
+  <rules>
+    <rule name="Rewrite segment to id querystring" stopProcessing="true">
+      <match url="^file/(.*)$" />
+      <action type="Redirect" url="home/abssasa/{R:1}" appendQueryString="false"/>
+    </rule>
+  </rules>
+</rewrite>

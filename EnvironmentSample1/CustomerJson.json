@@ -1,0 +1,17 @@
+﻿{
+  "CustomerSection": {
+    "A": 6767676,
+    "B": true
+  },
+  "CustomerProperty": "你好",
+  "Window1": {
+    "Length": "21Window1",
+    "Width": 2333,
+    "Height": "高度Window1"
+  },
+  "Window2": {
+    "Length": "21Window2",
+    "Width": 2333,
+    "Height": "高度Window2"
+  }
+}

@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Files\qwer.css" />
+    <None Remove="Files\subFiles.css" />
+    <None Remove="Files\test.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Files\qwer.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </EmbeddedResource>
+    <Content Include="Files\test.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <EmbeddedResource Include="Files\subFiles.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Reference Include="MiddlewareTest1">
+      <HintPath>..\MiddlewareTest1\bin\Debug\netcoreapp2.2\publish\MiddlewareTest1.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
