@@ -22,7 +22,7 @@ namespace RequestAPISample.Controllers
             message.Headers.Add("key1", "value1");
 
             var httpClient = _httpClientFactory.CreateClient();
-            httpClient.SendAsync(message);
+            await httpClient.SendAsync(message);
 
             return View();
         }

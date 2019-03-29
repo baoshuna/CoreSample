@@ -25,6 +25,7 @@ namespace EFAPI.Controllers
         [HttpGet(Name ="GetAll")]
         public IEnumerable<TodoItem> GetAll()
         {
+            Enumerable.Empty<>
             return context.TodoItems.ToList();
         }
         
