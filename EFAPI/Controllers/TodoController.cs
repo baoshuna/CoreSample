@@ -25,8 +25,6 @@ namespace EFAPI.Controllers
         [HttpGet(Name ="GetAll")]
         public IEnumerable<TodoItem> GetAll()
         {
-            var x = HttpContext.RequestServices.GetService<ITestService>();
-            var xx = x.GetGuid();
             return context.TodoItems.ToList();
         }
         
