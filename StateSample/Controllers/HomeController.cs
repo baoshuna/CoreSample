@@ -26,7 +26,7 @@ namespace StateSample.Controllers
             var jsonArr = new List<long>();
             var protobufArr = new List<long>();
 
-            // 用于测试数据
+            // 用于测试数据1
             var person1 = new Person1
             {
                 Id = 1,
