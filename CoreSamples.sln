@@ -23,6 +23,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StateSample", "StateSample\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestAPISample", "RequestAPISample\RequestAPISample.csproj", "{86BF213E-9ADC-4CDC-BA1F-14171BBE94E4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SignalRSamples", "SignalRSamples", "{AD27AC8F-41B7-4B38-8CF8-20EB38BCF310}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketSample", "WebSocketSample\WebSocketSample.csproj", "{51436148-121F-4453-B10D-B1F27141BDD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRChatRoomSample", "SignalRChatRoomSample\SignalRChatRoomSample.csproj", "{3FC3D318-2702-4BB9-8C1E-5B4A3FBAC530}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,9 +75,21 @@ Global
 		{86BF213E-9ADC-4CDC-BA1F-14171BBE94E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86BF213E-9ADC-4CDC-BA1F-14171BBE94E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86BF213E-9ADC-4CDC-BA1F-14171BBE94E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51436148-121F-4453-B10D-B1F27141BDD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51436148-121F-4453-B10D-B1F27141BDD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51436148-121F-4453-B10D-B1F27141BDD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51436148-121F-4453-B10D-B1F27141BDD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FC3D318-2702-4BB9-8C1E-5B4A3FBAC530}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FC3D318-2702-4BB9-8C1E-5B4A3FBAC530}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FC3D318-2702-4BB9-8C1E-5B4A3FBAC530}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FC3D318-2702-4BB9-8C1E-5B4A3FBAC530}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{51436148-121F-4453-B10D-B1F27141BDD7} = {AD27AC8F-41B7-4B38-8CF8-20EB38BCF310}
+		{3FC3D318-2702-4BB9-8C1E-5B4A3FBAC530} = {AD27AC8F-41B7-4B38-8CF8-20EB38BCF310}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2C6261AB-338D-43D7-A796-615168E0D4A4}
