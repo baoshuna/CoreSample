@@ -4,12 +4,32 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using SignalRChatRoomSample.Hubs;
 using SignalRChatRoomSample.Models;
 
 namespace SignalRChatRoomSample.Controllers
 {
     public class HomeController : Controller
     {
+        //private readonly IHubContext<ChatHub> _hubContext;
+
+        //public HomeController(IHubContext<ChatHub> hubContext)
+        //{
+        //    _hubContext = hubContext;
+        //}
+        public IActionResult Send()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Send([FromServices]IHubContext<ChatHub> hubContext, string user,string message)
+        {
+            hubContext.Clients.All.SendAsync("ReceiveMessage", user, message + "---" + DateTime.Now.ToString());
+            return View();
+        }
+
         public IActionResult Index()
         {
             return View();
