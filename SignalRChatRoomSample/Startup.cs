@@ -38,7 +38,7 @@ namespace SignalRChatRoomSample
                 .WithOrigins("http://localhost:62841")
                 .AllowCredentials();
             }));
-            services.AddSignalR();
+            services.AddSignalR().AddMessagePackProtocol();
             services.AddSingleton<IUserIdProvider, NameUserIdProvider>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -65,6 +65,7 @@ namespace SignalRChatRoomSample
                 builder.MapHub<ChatHub>("/chathub");
                 builder.MapHub<GroupChatHub>("/groupChatHub");
                 builder.MapHub<UserChatHub>("/userChatHub");
+                builder.MapHub<StreamHub>("/streamHub");
             });
 
             app.Use(async (context, next) =>
