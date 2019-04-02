@@ -1,2 +1,2 @@
 # CoreSample
-S
+Sample for .Net Core
