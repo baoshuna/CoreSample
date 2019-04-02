@@ -15,7 +15,9 @@ namespace SignalRChatRoomSample.Hubs
             // 是cookie还是user还是queryString
             var x = connection.User?.Identity?.Name;
 
-            return connection.GetHttpContext().Request.Query["userid"];
+            // return connection.GetHttpContext().Request.Query["userid"];
+
+            return connection.User?.FindFirst("UserName")?.Value;
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -11,6 +12,7 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SignalRChatRoomSample.Hubs;
+using SignalRChatRoomSample.Services;
 
 namespace SignalRChatRoomSample
 {
@@ -39,11 +41,20 @@ namespace SignalRChatRoomSample
                 .WithOrigins("http://localhost:62841")
                 .AllowCredentials();
             }));
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(config =>
+                {
+                    config.LoginPath = "/User/Login";
+                    config.ReturnUrlParameter = "returnUrl";
+                });
+
             services.AddSignalR(options=>
             {
                 options.EnableDetailedErrors = true;
             }).AddMessagePackProtocol();
             services.AddSingleton<IUserIdProvider, NameUserIdProvider>();
+            services.AddTransient<IUserService, UserService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -63,6 +74,8 @@ namespace SignalRChatRoomSample
             app.UseCookiePolicy();
 
             app.UseCors("CorsPolicy");
+
+            app.UseAuthentication();
 
             app.UseSignalR(builder =>
             {
@@ -88,7 +101,7 @@ namespace SignalRChatRoomSample
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Send}/{id?}");
+                    template: "{controller=User}/{action=Index}/{id?}");
             });
         }
     }
