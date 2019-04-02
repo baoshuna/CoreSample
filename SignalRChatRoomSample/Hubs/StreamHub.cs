@@ -13,7 +13,7 @@ namespace SignalRChatRoomSample.Hubs
         public ChannelReader<string> ReadLogStream()
         {
             var channel = Channel.CreateUnbounded<string>();
-            // 不能用await 不能用wait();
+            // 不能用await 不能用wait();!
             _ = WriteFile(channel.Writer);
 
             return channel.Reader;
