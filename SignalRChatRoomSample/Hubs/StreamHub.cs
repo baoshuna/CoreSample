@@ -27,7 +27,7 @@ namespace SignalRChatRoomSample.Hubs
                 while ((line= streamReader.ReadLine())!=null)
                 {
                     await writer.WriteAsync(line);
-                    await Task.Delay(TimeSpan.FromSeconds(1));
+                    await Task.Delay(TimeSpan.FromSeconds(0.5));
                 }
                 writer.TryComplete();
             }

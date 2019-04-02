@@ -19,7 +19,7 @@
       <script>
           var connection = new signalR.HubConnectionBuilder()
               .withUrl('/chatHub')
-              .configureLogging(signalR.LogLevel.Information)
+              .configureLogging(signalR.LogLevel.Debug)
               .withHubProtocol(new signalR.protocols.msgpack.MessagePackHubProtocol())
               .build()
           

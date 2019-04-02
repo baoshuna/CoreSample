@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Connections;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Configuration;
@@ -38,7 +39,10 @@ namespace SignalRChatRoomSample
                 .WithOrigins("http://localhost:62841")
                 .AllowCredentials();
             }));
-            services.AddSignalR().AddMessagePackProtocol();
+            services.AddSignalR(options=>
+            {
+                options.EnableDetailedErrors = true;
+            }).AddMessagePackProtocol();
             services.AddSingleton<IUserIdProvider, NameUserIdProvider>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -62,7 +66,11 @@ namespace SignalRChatRoomSample
 
             app.UseSignalR(builder =>
             {
-                builder.MapHub<ChatHub>("/chathub");
+                builder.MapHub<ChatHub>("/chathub",options=>
+                {
+                    options.Transports = HttpTransportType.LongPolling;
+                    options.LongPolling.PollTimeout = TimeSpan.FromSeconds(1);
+                });
                 builder.MapHub<GroupChatHub>("/groupChatHub");
                 builder.MapHub<UserChatHub>("/userChatHub");
                 builder.MapHub<StreamHub>("/streamHub");
