@@ -1,0 +1,74 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div>
+        My User Name：<input type="text" id="myUserName" readonly value="@User?.FindFirst("UserName")?.Value"/>
+        <input type="button" id="connectButton" value="Connect" />
+        @if (User.Identity.IsAuthenticated)
+        {
+            @Html.ActionLink("logout", "Logout");
+        }
+    </div>
+    <div>
+        To User Name：<input type="text" id="toUserName" />
+        Message：<input type="text" id="messageInput" />
+        <input type="button" id="sendButton" value="Send" />
+    </div>
+    <ul id="messagesList"></ul>
+    <script src="~/js/signalr.min.js"></script>
+    <script src="~/js/msgpack5.js"></script>
+    <script src="~/js/signalr-protocol-msgpack.js"></script>
+    <script>
+        var connection;
+
+        document.getElementById("connectButton").addEventListener("click", function (event) {
+            var myUserName = document.getElementById("myUserName").value;
+
+            connection = new signalR.HubConnectionBuilder()
+                .withUrl("/userChatHub")
+                .configureLogging(signalR.LogLevel.Debug)
+                .withHubProtocol(new signalR.protocols.msgpack.MessagePackHubProtocol())
+                .build();
+
+            connection.start().then(function () {
+                var li = document.createElement("li");
+                li.textContent = "Open Connection succeed !";
+                document.getElementById("messagesList").appendChild(li);
+            }).catch(err => {
+                if (err.statusCode == 401) {
+                    window.location = '@Url.Action("Login","User")'
+                }
+            });
+
+            connection.on("ReceiveDirectMessage", function (message) {
+                var li = document.createElement("li");
+                li.textContent = message;
+                document.getElementById("messagesList").appendChild(li);
+            });
+
+
+            event.preventDefault();
+        });
+
+
+
+        document.getElementById("sendButton").addEventListener("click", function (event) {
+            var toUserName = document.getElementById("toUserName").value;
+            var message = document.getElementById("messageInput").value;
+            connection.invoke("SendToUser", toUserName, message).catch(function (err) {
+                return console.error(err.toString());
+            });
+            event.preventDefault();
+        });
+    </script>
+</body>
+</html>
