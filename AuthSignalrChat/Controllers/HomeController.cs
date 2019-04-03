@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AuthSignalrChat.Models;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace AuthSignalrChat.Controllers
 {
@@ -12,6 +13,7 @@ namespace AuthSignalrChat.Controllers
     {
         public IActionResult Index()
         {
+            ResultFilterAttribute
             return View();
         }
 
