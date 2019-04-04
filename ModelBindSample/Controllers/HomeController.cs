@@ -11,14 +11,30 @@ namespace ModelBindSample.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index([BindRequired]int id)
+        public IActionResult Index()
         {
             return View();
         }
 
+        [HttpGet("/products/x",Name ="Test")]
         public IActionResult Privacy()
         {
+            var x = Url.RouteUrl("T");
+            var z = Url.Action("Test");
+            var q = Url.Action("Test2", new { id = 2 });
             return View();
+        }
+
+        [HttpGet("/products/pp",Name ="T")]
+        public IActionResult Test()
+        {
+            return Content("x");
+        }
+
+        [HttpGet("/products/{id}", Name = "TT")]
+        public IActionResult Test2(int id)
+        {
+            return Content("x");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
