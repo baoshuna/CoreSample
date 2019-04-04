@@ -13,7 +13,6 @@ namespace AuthSignalrChat.Controllers
     {
         public IActionResult Index()
         {
-            ResultFilterAttribute
             return View();
         }
 
