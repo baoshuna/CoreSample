@@ -35,7 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthSignalrChat", "AuthSign
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorSample", "RazorSample\RazorSample.csproj", "{624FD460-257F-45CA-AC3A-653E056E2964}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelBindSample", "ModelBindSample\ModelBindSample.csproj", "{982EC3D4-C568-4BAC-88FA-70C945D889A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelBindSample", "ModelBindSample\ModelBindSample.csproj", "{982EC3D4-C568-4BAC-88FA-70C945D889A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileUploadSample", "FileUploadSample\FileUploadSample.csproj", "{6802909E-0B81-42B0-A1CB-85BDCC2C73A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -107,6 +109,10 @@ Global
 		{982EC3D4-C568-4BAC-88FA-70C945D889A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{982EC3D4-C568-4BAC-88FA-70C945D889A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{982EC3D4-C568-4BAC-88FA-70C945D889A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6802909E-0B81-42B0-A1CB-85BDCC2C73A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6802909E-0B81-42B0-A1CB-85BDCC2C73A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6802909E-0B81-42B0-A1CB-85BDCC2C73A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6802909E-0B81-42B0-A1CB-85BDCC2C73A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
