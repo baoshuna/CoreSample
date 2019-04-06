@@ -32,10 +32,11 @@ namespace FilterSample
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddScoped<SampleAsyncActionFilter>();
             services.AddSingleton<IDateTimeService, DateTimeService>();
             services.AddMvc(options=>
             {
-                // options.Filters.Add(typeof(SampleActionFilter));
+               // options.Filters.Add(typeof(SampleAsyncActionFilter));
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

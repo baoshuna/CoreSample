@@ -4,16 +4,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using FilterSample.Models;
-using FilterSample.Filters;
+using ApplicationPartSample.Models;
 
-namespace FilterSample.Controllers
+namespace ApplicationPartSample.Controllers
 {
-    // [AddHeaderWithFactoryAttribute]
     public class HomeController : Controller
     {
-        // [ServiceFilter(typeof(SampleAsyncActionFilter))]
-        [TestUseDi]
         public IActionResult Index()
         {
             return View();
