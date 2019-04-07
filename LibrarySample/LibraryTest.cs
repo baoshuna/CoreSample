@@ -9,7 +9,7 @@ namespace LibrarySample
     {
         public IActionResult Index()
         {
-            return new ContentResult { Content = "hello from LibraryTest" };
+            return new ContentResult { Content = "hello from LibraryTest1" };
         }
     }
 }

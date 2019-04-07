@@ -12,11 +12,13 @@ namespace ApplicationPartSample.Extensions
     {
         public void PopulateFeature(IEnumerable<ApplicationPart> parts, ControllerFeature feature)
         {
+            // 获取ApplicationPart中所有的AssemblyPart
             var assemblyTypes = parts.Where(it => it.GetType().Equals(typeof(AssemblyPart))).Cast<AssemblyPart>();
 
 
             foreach (var assemblyType in assemblyTypes)
             {
+                // 获取当前AssemblyPart中的所有以"Test"结尾的类
                 var types = assemblyType.Assembly.GetTypes()
                     .Where(it => it.Name.EndsWith("Test"));
 
