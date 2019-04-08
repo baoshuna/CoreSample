@@ -41,11 +41,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileUploadSample", "FileUpl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilterSample", "FilterSample\FilterSample.csproj", "{91CAAD2F-30B6-4A73-B32B-88F46C8500E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationPartSample", "ApplicationPartSample\ApplicationPartSample.csproj", "{97B01BAD-B517-4327-AB6F-C30682A4A1C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationPartSample", "ApplicationPartSample\ApplicationPartSample.csproj", "{97B01BAD-B517-4327-AB6F-C30682A4A1C2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApplicationParts", "ApplicationParts", "{1677E3B0-7523-430A-9FF0-2A9FF46889B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibrarySample", "LibrarySample\LibrarySample.csproj", "{4AEDC3AB-BF52-457D-A237-18F178370018}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibrarySample", "LibrarySample\LibrarySample.csproj", "{4AEDC3AB-BF52-457D-A237-18F178370018}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPISample", "WebAPISample\WebAPISample.csproj", "{7FC2D43F-77EE-4F05-988F-0F1693FD8DCB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -133,6 +135,10 @@ Global
 		{4AEDC3AB-BF52-457D-A237-18F178370018}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AEDC3AB-BF52-457D-A237-18F178370018}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AEDC3AB-BF52-457D-A237-18F178370018}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FC2D43F-77EE-4F05-988F-0F1693FD8DCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FC2D43F-77EE-4F05-988F-0F1693FD8DCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FC2D43F-77EE-4F05-988F-0F1693FD8DCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FC2D43F-77EE-4F05-988F-0F1693FD8DCB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
