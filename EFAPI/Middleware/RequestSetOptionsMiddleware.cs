@@ -20,21 +20,16 @@ namespace EFAPI.Middleware
 
         //传进来的参数
         private readonly IOptions<AppOptions> options;
-        private readonly ITestService testService;
 
-        public RequestSetOptionsMiddleware(RequestDelegate next, IOptions<AppOptions> options, ITestService testService)
+        public RequestSetOptionsMiddleware(RequestDelegate next, IOptions<AppOptions> options)
         {
             this.next = next;
             this.options = options;
-            this.testService = testService;
         }
 
         public async Task InvokeAsync(HttpContext httpContext)
         {
             // xcode.me?option=xxx
-            var datetime = DateTime.Now.ToString(this.options.Value.Format);
-            await httpContext.Response.WriteAsync(datetime + "\r\n");
-            await httpContext.Response.WriteAsync(testService.GetGuid() + "\r\n");
 
             //直接调用下一个中间件
             await next(httpContext);
