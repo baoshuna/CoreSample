@@ -1,6 +1,6 @@
 using System;
 
-namespace DockerSampe_1.Models
+namespace DockerSampe.Models
 {
     public class ErrorViewModel
     {

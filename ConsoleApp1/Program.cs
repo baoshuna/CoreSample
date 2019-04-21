@@ -2,27 +2,18 @@
 
 namespace ConsoleApp1
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine(Test());
         }
 
-        static int Test()
+        private static int Test()
         {
-            try
-            {
-                return 1;
-            }
-            catch
-            {
-                return 2;
-            }
-            finally
-            {
-                return 3;
-            }
+            var x = 1;
+
+            return x;
         }
     }
 }

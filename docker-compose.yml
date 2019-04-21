@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  dockersampe_1:
+    image: lzw5399/dockersampe_1
+    ports: 
+      - "80:80"
+    container_name: webdemo2

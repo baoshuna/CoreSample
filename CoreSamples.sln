@@ -57,13 +57,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryForTest", "LibraryFo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryUseXunit.Test", "LibraryUseXunit.Test\LibraryUseXunit.Test.csproj", "{DDA1E4E0-4371-4900-AA8B-68E305789B06}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DockerSampe_1", "DockerSampe_1\DockerSampe_1.csproj", "{80BE3A19-1DF9-4C44-A625-69F0B62E09FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DockerSampe", "DockerSampe_1\DockerSampe.csproj", "{80BE3A19-1DF9-4C44-A625-69F0B62E09FE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{30D519E5-FDCC-4D75-B05A-6EA59BB954BD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ConsoleForTest", "ConsoleForTest", "{8CE13E4E-6848-4D34-AAF5-72D1470EBCE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{0F037414-E6D7-472F-B947-C106FAFD2042}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{0F037414-E6D7-472F-B947-C106FAFD2042}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

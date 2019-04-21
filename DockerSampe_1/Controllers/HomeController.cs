@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DockerSampe.Models;
 using Microsoft.AspNetCore.Mvc;
-using DockerSampe_1.Models;
+using System.Diagnostics;
 
-namespace DockerSampe_1.Controllers
+namespace DockerSampe.Controllers
 {
     public class HomeController : Controller
     {
         public IActionResult Index()
         {
+            int x = 111111111;
+            if (x == 1)
+            {
+            }
             return View();
         }
 
