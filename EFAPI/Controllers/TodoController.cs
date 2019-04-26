@@ -17,18 +17,19 @@ namespace EFAPI.Controllers
     public class TodoController : ControllerBase
     {
         private readonly MyDbContext context;
+
         public TodoController(MyDbContext context)
         {
             this.context = context;
         }
 
-        [HttpGet(Name ="GetAll")]
+        [HttpGet(Name = "GetAll")]
         public IEnumerable<TodoItem> GetAll()
         {
             return context.TodoItems.ToList();
         }
-        
-        [HttpGet("{id}",Name ="GetTodo")]
+
+        [HttpGet("{id}", Name = "GetTodo")]
         public IActionResult GetById(string id)
         {
             var item = context.TodoItems.FirstOrDefault(it => it.Id.Equals(id));
@@ -54,6 +55,17 @@ namespace EFAPI.Controllers
 
             //跳转到GetTodo
             return CreatedAtRoute("GetTodo", new { Id = item.Id }, item);
+        }
+
+        [HttpPost("Test")]
+        public async Task<IActionResult> Test(List<TodoItem> item)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("模型不准确");
+            }
+
+            return null;
         }
     }
 }
