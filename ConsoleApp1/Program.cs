@@ -6,10 +6,9 @@ namespace ConsoleApp1
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine(Test());
         }
 
-        private static int Test()
+        private static int Test(int m)
         {
             var x = 1;
 

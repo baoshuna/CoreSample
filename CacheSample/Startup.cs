@@ -32,6 +32,12 @@ namespace CacheSample
 
             services.AddMemoryCache();
 
+            services.AddDistributedRedisCache(options =>
+            {
+                options.Configuration = Configuration.GetConnectionString("AliyunRedis");
+                options.InstanceName = "AliyunRedis";
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -54,7 +60,7 @@ namespace CacheSample
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=GetCurrentTimeForRedisCache}/{id?}");
             });
         }
     }
