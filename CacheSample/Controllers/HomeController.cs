@@ -10,6 +10,8 @@ using Microsoft.Extensions.Caching.Distributed;
 using System.Text;
 using CSRedis;
 using StackExchange.Redis;
+using CacheSample.Extensions;
+using Newtonsoft.Json;
 
 namespace CacheSample.Controllers
 {
@@ -49,9 +51,11 @@ namespace CacheSample.Controllers
             watch.Start();
 
             var time = _redisCache.GetString("redisTime");
+
             if (time == null)
             {
-                _redisCache.SetString("redisTime", time);
+                time = DateTime.Now.ToString();
+                _redisCache.SetString("redisTime", time, new DistributedCacheEntryOptions { AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(20) });
             }
 
             watch.Stop();
@@ -62,22 +66,35 @@ namespace CacheSample.Controllers
         /// <summary>CsRedis</summary>
         public IActionResult GetCurrentTimeForCsRedisCache()
         {
-            // var csredis = new CSRedisClient("47.100.220.174:6379,password=redis@pwd");
-            var redis = ConnectionMultiplexer.Connect("server1:6379,server2:6379");
-            var db = redis.GetDatabase();
+            using (var csredis = new CSRedisClient("47.100.220.174:6379,password=redis@pwd"))
+            {
+                var list = csredis.Get<List<string>>("x");
+            }
 
             var watch = new Stopwatch();
             watch.Start();
 
-            var time = _redisCache.GetString("redisTime");
-            if (time == null)
-            {
-                _redisCache.SetString("redisTime", time);
-            }
-
             watch.Stop();
 
-            return Content($"{time},耗时:{watch.ElapsedMilliseconds}毫秒");
+            return Content($"{watch.ToString()},耗时:{watch.ElapsedMilliseconds}毫秒");
+        }
+
+        public IActionResult GetDataByHttpCache(int param)
+
+        {
+            var data = new List<int>
+            {
+                param
+            };
+
+            for (int i = 0; i < 100; i++)
+            {
+                data.Add(i * 78);
+            }
+
+            var dataStr = JsonConvert.SerializeObject(data);
+
+            return Content(dataStr);
         }
 
         #region

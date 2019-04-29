@@ -56,6 +56,14 @@ namespace CacheSample
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            app.Use(async (context, next) =>
+            {
+                var header = context.Response.Headers;
+                // context.Response.Headers.Add("Cache-Control", "max-age=600");
+                header.Add("Last-Modified", header["Date"]);
+                await next();
+            });
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
