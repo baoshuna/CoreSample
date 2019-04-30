@@ -79,6 +79,7 @@ namespace CacheSample.Controllers
             return Content($"{watch.ToString()},耗时:{watch.ElapsedMilliseconds}毫秒");
         }
 
+        [ResponseCache(CacheProfileName = "myProfile")]
         public IActionResult GetDataByHttpCache(int param)
 
         {

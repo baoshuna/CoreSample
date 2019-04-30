@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Net.Http.Headers;
 
 namespace CacheSample
 {
@@ -20,30 +21,49 @@ namespace CacheSample
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<CookiePolicyOptions>(options =>
             {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
+                options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
             });
 
+            // 内存缓存
             services.AddMemoryCache();
 
+            // 分布式缓存
             services.AddDistributedRedisCache(options =>
             {
                 options.Configuration = Configuration.GetConnectionString("AliyunRedis");
                 options.InstanceName = "AliyunRedis";
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            // 中间件缓存
+            services.AddResponseCaching();
+
+            // 响应压缩
+            services.AddResponseCompression();
+
+            services.AddMvc(options =>
+            {
+                // Http缓存的配置
+                options.CacheProfiles.Add("myProfile", new CacheProfile
+                {
+                    Duration = 600,
+                    Location = ResponseCacheLocation.Any
+                });
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            // 响应压缩
+            app.UseResponseCompression();
+
+            // 中间件缓存
+            app.UseResponseCaching();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -53,16 +73,19 @@ namespace CacheSample
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseStaticFiles();
-            app.UseCookiePolicy();
-
-            app.Use(async (context, next) =>
+            // 静态文件Http缓存
+            app.UseStaticFiles(new StaticFileOptions
             {
-                var header = context.Response.Headers;
-                // context.Response.Headers.Add("Cache-Control", "max-age=600");
-                header.Add("Last-Modified", header["Date"]);
-                await next();
+                OnPrepareResponse = context =>
+                {
+                    context.Context.Response.GetTypedHeaders().CacheControl = new CacheControlHeaderValue
+                    {
+                        Public = true,
+                        MaxAge = TimeSpan.FromMinutes(20)
+                    };
+                }
             });
+            app.UseCookiePolicy();
 
             app.UseMvc(routes =>
             {
