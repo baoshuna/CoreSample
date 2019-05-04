@@ -6,13 +6,16 @@ namespace ConsoleApp1
     {
         private static void Main(string[] args)
         {
+            var x = 6 & 11;
+
+            Console.WriteLine(x);
         }
 
-        private static int Test(int m)
+        private static (int, string) Test(int m)
         {
             var x = 1;
 
-            return x;
+            return (x, "x");
         }
     }
 }
